@@ -193,8 +193,11 @@ class Admin extends BaseController
         $ciri = $this->ciri->findAll();
         $tmp = [];
         $o = 0;
+		$totalnilai = 0;
         foreach ($r as $rs){
-			return $rs;
+			if($rs == 1){
+				$totalnilai +=  1;
+			}
         //     $o++;
         // for ($i = 0; $i < $o; $i++) {
         //     $temp[$i] = [
@@ -203,6 +206,7 @@ class Admin extends BaseController
         //         'status' => $r[$i],
         //     ];
         }
+		return $totalnilai;
         // foreach ($cat as $c) {
         //     $temp2 = [];
         //     $hub = $this->hub->where('hub_kucing', $c['kerusakan_id'])->findAll();
