@@ -193,79 +193,80 @@ class Admin extends BaseController
         $ciri = $this->ciri->findAll();
         $tmp = [];
         $o = 0;
-        foreach ($r as $rr)
-            $o++;
-        for ($i = 0; $i < $o; $i++) {
-            $temp[$i] = [
-                'name' => $ciri[$i]['ciri_id'],
-                'bobot' => $ciri[$i]['ciri_bobot'],
-                'status' => $r[$i],
-            ];
+        foreach ($r as $rs){
+			return $rs;
+        //     $o++;
+        // for ($i = 0; $i < $o; $i++) {
+        //     $temp[$i] = [
+        //         'name' => $ciri[$i]['ciri_id'],
+        //         'bobot' => $ciri[$i]['ciri_bobot'],
+        //         'status' => $r[$i],
+        //     ];
         }
-        foreach ($cat as $c) {
-            $temp2 = [];
-            $hub = $this->hub->where('hub_kucing', $c['kerusakan_id'])->findAll();
-            $total = 0;
-            $ciriAll = 0;
-            foreach ($hub as $h) {
-                foreach ($temp as $t) {
-                    if ($t['name'] == $h['hub_ciri'] && $t['status'] == 1) {
-                        $s = true;
-                        foreach ($temp2 as $t2) {
-                            if ($t2['name'] == $t['name'])
-                                $s = false;
-                        }
-                        if ($s) {
-                            // d([
-                            //     'c' => $c['kerusakan_jenis'],
-                            //     't' => $t['name'],
-                            //     'h' => $h['hub_ciri'],
-                            // ]);
-                            array_push($temp2, [
-                                'name' => $t['name'],
-                                'bobot' => $t['bobot'],
-                            ]);
-                        }
-                    }
-                }
-                $ciriH = $this->ciri->find($h['hub_ciri']);
-                $ciriAll += $ciriH['ciri_bobot'];
-            }
-            foreach ($temp2 as $te) {
-                $total += $te['bobot'];
-            }
-            // foreach ($temp as $te) {
-            //     $ciriAll += $te['bobot'];
-            // }
-            // d($temp2);
-            // d($total);
-            $hasil = round(($total / $ciriAll), 2);
-            array_push($arrhasil, [
-                'kucing' => $c['kerusakan_jenis'],
-                'foto' => $c['kerusakan_foto'],
-                'deskripsi' => $c['kerusakan_deskripsi'],
-                'hasil' => $hasil
-            ]);
-            array_push($tmp, [
-                'kucing' => $c['kerusakan_jenis'],
-                'data' => $temp2,
-                'total' => $total,
-                'all' => $ciriAll,
-                'hasil' => $hasil,
-            ]);
-            $fhasil = $hasil > $fhasil ? $hasil : $fhasil;
-        }
-        // echo "hai";
-        // d($fhasil);
-        // d($tmp);
-        // d($arrhasil);
-        $data = [
-            'fhasil' => $fhasil,
-            'tmp' => $tmp,
-            'arrhasil' => $arrhasil
-        ];
-        // return view('cbr_hasil', $data);
-		return $arr;
+        // foreach ($cat as $c) {
+        //     $temp2 = [];
+        //     $hub = $this->hub->where('hub_kucing', $c['kerusakan_id'])->findAll();
+        //     $total = 0;
+        //     $ciriAll = 0;
+        //     foreach ($hub as $h) {
+        //         foreach ($temp as $t) {
+        //             if ($t['name'] == $h['hub_ciri'] && $t['status'] == 1) {
+        //                 $s = true;
+        //                 foreach ($temp2 as $t2) {
+        //                     if ($t2['name'] == $t['name'])
+        //                         $s = false;
+        //                 }
+        //                 if ($s) {
+        //                     // d([
+        //                     //     'c' => $c['kerusakan_jenis'],
+        //                     //     't' => $t['name'],
+        //                     //     'h' => $h['hub_ciri'],
+        //                     // ]);
+        //                     array_push($temp2, [
+        //                         'name' => $t['name'],
+        //                         'bobot' => $t['bobot'],
+        //                     ]);
+        //                 }
+        //             }
+        //         }
+        //         $ciriH = $this->ciri->find($h['hub_ciri']);
+        //         $ciriAll += $ciriH['ciri_bobot'];
+        //     }
+        //     foreach ($temp2 as $te) {
+        //         $total += $te['bobot'];
+        //     }
+        //     // foreach ($temp as $te) {
+        //     //     $ciriAll += $te['bobot'];
+        //     // }
+        //     // d($temp2);
+        //     // d($total);
+        //     $hasil = round(($total / $ciriAll), 2);
+        //     array_push($arrhasil, [
+        //         'kucing' => $c['kerusakan_jenis'],
+        //         'foto' => $c['kerusakan_foto'],
+        //         'deskripsi' => $c['kerusakan_deskripsi'],
+        //         'hasil' => $hasil
+        //     ]);
+        //     array_push($tmp, [
+        //         'kucing' => $c['kerusakan_jenis'],
+        //         'data' => $temp2,
+        //         'total' => $total,
+        //         'all' => $ciriAll,
+        //         'hasil' => $hasil,
+        //     ]);
+        //     $fhasil = $hasil > $fhasil ? $hasil : $fhasil;
+        // }
+        // // echo "hai";
+        // // d($fhasil);
+        // // d($tmp);
+        // // d($arrhasil);
+        // $data = [
+        //     'fhasil' => $fhasil,
+        //     'tmp' => $tmp,
+        //     'arrhasil' => $arrhasil
+        // ];
+        // // return view('cbr_hasil', $data);
+		// return $arr;
     }
     public function input_cbr()
     {
