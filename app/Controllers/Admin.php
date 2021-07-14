@@ -196,10 +196,11 @@ class Admin extends BaseController
         $tmp = [];
         $o = 0;
 		$nilai = 0;
+		$ciriAll = 0;
 		foreach ($r as $rs){
-			// if($rs == "1"){
-			// 	$total += $ciri[$nilai]['ciri_bobot'];
-			// }
+			if($rs == "1"){
+				$ciriAll += $ciri[$nilai]['ciri_bobot'];
+			}
 			$temp[$nilai] = [
 				'name' => $ciri[$nilai]['ciri_id'],
 				'bobot' => $ciri[$nilai]['ciri_bobot'],
@@ -220,7 +221,6 @@ class Admin extends BaseController
             $temp2 = [];
 			$total = 0;
             $hub = $this->hub->where('hub_kucing', $c['kerusakan_id'])->findAll();
-            $ciriAll = 0;
             foreach ($hub as $h) {
                 foreach ($temp as $t) {
                     if ($t['name'] == $h['hub_ciri'] && $t['status'] == 1) {
@@ -243,7 +243,7 @@ class Admin extends BaseController
                     }
                 }
                 $ciriH = $this->ciri->find($h['hub_ciri']);
-                $ciriAll += $ciriH['ciri_bobot'];
+                // $ciriAll += $ciriH['ciri_bobot'];
             }
             foreach ($temp2 as $te) {
                 $total += $te['bobot'];
