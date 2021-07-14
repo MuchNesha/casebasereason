@@ -7,11 +7,11 @@ use CodeIgniter\Model;
 class kucingModel extends Model
 {
     protected $table = 'kucing';
-    protected $primaryKey = 'kucing_id';
+    protected $primaryKey = 'kerusakan_id';
     protected $allowedFields =
     [
-        'kucing_jenis',
-        'kucing_foto',
-        'kucing_deskripsi',
+        'kerusakan_jenis',
+        'kerusakan_foto',
+        'kerusakan_deskripsi',
     ];
 }
