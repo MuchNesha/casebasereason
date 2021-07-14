@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use CodeIgniter\Config\View;
+
 class Admin extends BaseController
 {
     public function __construct()
@@ -206,7 +208,7 @@ class Admin extends BaseController
         //         'status' => $r[$i],
         //     ];
         }
-		return $totalnilai;
+		return "Hello";
         // foreach ($cat as $c) {
         //     $temp2 = [];
         //     $hub = $this->hub->where('hub_kucing', $c['kerusakan_id'])->findAll();
