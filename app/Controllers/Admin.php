@@ -198,7 +198,7 @@ class Admin extends BaseController
 		$totalnilai = 0;
         foreach ($r as $rs){
 			if($rs == "1"){
-				$totalnilai = $totalnilai + 1;
+				$totalnilai += 1;
 			}
         //     $o++;
         // for ($i = 0; $i < $o; $i++) {
