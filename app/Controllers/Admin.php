@@ -201,7 +201,7 @@ class Admin extends BaseController
 			if($rs == "1"){
 				$total += $ciri[$nilai]['ciri_bobot'];
 				echo $ciri[$nilai]['ciri_bobot'];
-
+				echo $nilai;
 				$temp[$nilai] = [
 					'name' => $ciri[$nilai]['ciri_id'],
 					'bobot' => $ciri[$nilai]['ciri_bobot'],
