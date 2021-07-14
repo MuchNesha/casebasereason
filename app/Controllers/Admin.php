@@ -195,22 +195,18 @@ class Admin extends BaseController
         $ciri = $this->ciri->findAll();
         $tmp = [];
         $o = 0;
-		$total = 0;
 		$nilai = 0;
 		foreach ($r as $rs){
-			if($rs == "1"){
-				$total += $ciri[$nilai]['ciri_bobot'];
-				echo $ciri[$nilai]['ciri_ciri'];
-				echo $nilai;
-				$temp[$nilai] = [
-					'name' => $ciri[$nilai]['ciri_id'],
-					'bobot' => $ciri[$nilai]['ciri_bobot'],
-					'status' => $r[$nilai],
-				];
-			}
+			// if($rs == "1"){
+			// 	$total += $ciri[$nilai]['ciri_bobot'];
+			// }
+			$temp[$nilai] = [
+				'name' => $ciri[$nilai]['ciri_id'],
+				'bobot' => $ciri[$nilai]['ciri_bobot'],
+				'status' => $r[$nilai],
+			];
 			$nilai++;
 		}
-		echo $total;
 
         //     $o++;
         // for ($i = 0; $i < $o; $i++) {
@@ -222,6 +218,7 @@ class Admin extends BaseController
 
         foreach ($cat as $c) {
             $temp2 = [];
+			$total = 0;
             $hub = $this->hub->where('hub_kucing', $c['kerusakan_id'])->findAll();
             $ciriAll = 0;
             foreach ($hub as $h) {
@@ -248,9 +245,9 @@ class Admin extends BaseController
                 $ciriH = $this->ciri->find($h['hub_ciri']);
                 $ciriAll += $ciriH['ciri_bobot'];
             }
-            // foreach ($temp2 as $te) {
-            //     $total += $te['bobot'];
-            // }
+            foreach ($temp2 as $te) {
+                $total += $te['bobot'];
+            }
             // foreach ($temp as $te) {
             //     $ciriAll += $te['bobot'];
             // }
