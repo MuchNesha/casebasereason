@@ -208,6 +208,7 @@ class Admin extends BaseController
 			}
 			$nilai++;
 		}
+		echo $total;
 
         //     $o++;
         // for ($i = 0; $i < $o; $i++) {
