@@ -31,15 +31,15 @@ class Admin extends BaseController
     public function kucing_add()
     {
         $var = $this->request->getVar();
-        $c = $this->kucing->where('kucing_jenis', $var['kucing_jenis'])->first();
+        $c = $this->kucing->where('kerusakan_jenis', $var['kerusakan_jenis'])->first();
         if ($c != null) {
             session()->setFlashData('finsert', true);
             return redirect()->to('/kucing');
         }
         $this->kucing->save([
-            'kucing_jenis' => $var['kucing_jenis'],
-            'kucing_foto' => $var['kucing_foto'],
-            'kucing_deskripsi' => $var['kucing_deskripsi'],
+            'kerusakan_jenis' => $var['kerusakan_jenis'],
+            'kerusakan_foto' => $var['kerusakan_foto'],
+            'kerusakan_deskripsi' => $var['kerusakan_deskripsi'],
         ]);
         session()->setFlashData('insert', true);
         return redirect()->to('/kucing');
@@ -48,10 +48,10 @@ class Admin extends BaseController
     {
         $var = $this->request->getVar();
         $this->kucing->save([
-            'kucing_id' => $id,
-            'kucing_jenis' => $var['kucing_jenis'],
-            'kucing_foto' => $var['kucing_foto'],
-            'kucing_deskripsi' => $var['kucing_deskripsi'],
+            'kerusakan_id' => $id,
+            'kerusakan_jenis' => $var['kerusakan_jenis'],
+            'kerusakan_foto' => $var['kerusakan_foto'],
+            'kerusakan_deskripsi' => $var['kerusakan_deskripsi'],
         ]);
         session()->setFlashData('update', true);
         return redirect()->to('/kucing');
@@ -140,7 +140,7 @@ class Admin extends BaseController
         foreach ($res as $r)
             $j++;
         $temp = $this->kucing->find($res['hub_kucing']);
-        $res['kucing_jenis'] = $temp['kucing_jenis'];
+        $res['kerusakan_jenis'] = $temp['kerusakan_jenis'];
         $temp = $this->ciri->find($res['hub_ciri']);
         $res['ciri_ciri'] = $temp['ciri_ciri'];
         echo json_encode($res);
@@ -204,7 +204,7 @@ class Admin extends BaseController
         }
         foreach ($cat as $c) {
             $temp2 = [];
-            $hub = $this->hub->where('hub_kucing', $c['kucing_id'])->findAll();
+            $hub = $this->hub->where('hub_kucing', $c['kerusakan_id'])->findAll();
             $total = 0;
             $ciriAll = 0;
             foreach ($hub as $h) {
@@ -217,7 +217,7 @@ class Admin extends BaseController
                         }
                         if ($s) {
                             // d([
-                            //     'c' => $c['kucing_jenis'],
+                            //     'c' => $c['kerusakan_jenis'],
                             //     't' => $t['name'],
                             //     'h' => $h['hub_ciri'],
                             // ]);
@@ -239,15 +239,15 @@ class Admin extends BaseController
             // }
             // d($temp2);
             // d($total);
-            $hasil = round(($total / $ciriAll), 5);
+            $hasil = round(($total / $ciriAll), 2);
             array_push($arrhasil, [
-                'kucing' => $c['kucing_jenis'],
-                'foto' => $c['kucing_foto'],
-                'deskripsi' => $c['kucing_deskripsi'],
+                'kucing' => $c['kerusakan_jenis'],
+                'foto' => $c['kerusakan_foto'],
+                'deskripsi' => $c['kerusakan_deskripsi'],
                 'hasil' => $hasil
             ]);
             array_push($tmp, [
-                'kucing' => $c['kucing_jenis'],
+                'kucing' => $c['kerusakan_jenis'],
                 'data' => $temp2,
                 'total' => $total,
                 'all' => $ciriAll,
