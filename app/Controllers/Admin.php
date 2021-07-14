@@ -204,7 +204,7 @@ class Admin extends BaseController
 			echo $nilai;
 			$nilai++;
 			}
-		}
+
         //     $o++;
         // for ($i = 0; $i < $o; $i++) {
         //     $temp[$i] = [
