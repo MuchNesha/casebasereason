@@ -200,12 +200,12 @@ class Admin extends BaseController
 		foreach ($r as $rs){
 			if($rs == "1"){
 				$totalNilai += $ciri[$nilai]['ciri_bobot'];
+				$temp[$nilai] = [
+					'name' => $ciri[$nilai]['ciri_id'],
+					'bobot' => $ciri[$nilai]['ciri_bobot'],
+					'status' => $r[$nilai],
+				];
 			}
-			$temp[$nilai] = [
-                'name' => $ciri[$nilai]['ciri_id'],
-                'bobot' => $ciri[$nilai]['ciri_bobot'],
-                'status' => $r[$nilai],
-            ];
 			$nilai++;
 		}
 
