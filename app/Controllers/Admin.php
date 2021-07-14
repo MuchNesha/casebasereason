@@ -195,11 +195,16 @@ class Admin extends BaseController
         $ciri = $this->ciri->findAll();
         $tmp = [];
         $o = 0;
-		$totalnilai = 0;
-        foreach ($r as $rs){
+		$totalNilai = 0;
+		$nilai = 1;
+		foreach ($r as $rs){
 			if($rs == "1"){
-				$totalnilai += 1;
+				return $ciri[$nilai]['ciri_bobot'];
 			}
+			echo $nilai;
+			$nilai++;
+			}
+		}
         //     $o++;
         // for ($i = 0; $i < $o; $i++) {
         //     $temp[$i] = [
@@ -207,8 +212,7 @@ class Admin extends BaseController
         //         'bobot' => $ciri[$i]['ciri_bobot'],
         //         'status' => $r[$i],
         //     ];
-        }
-		return $totalnilai;
+
         // foreach ($cat as $c) {
         //     $temp2 = [];
         //     $hub = $this->hub->where('hub_kucing', $c['kerusakan_id'])->findAll();
