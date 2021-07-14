@@ -196,7 +196,7 @@ class Admin extends BaseController
         $tmp = [];
         $o = 0;
 		$total = 0;
-		$nilai = 1;
+		$nilai = 0;
 		foreach ($r as $rs){
 			if($rs == "1"){
 				$total += $ciri[$nilai]['ciri_bobot'];
@@ -210,6 +210,7 @@ class Admin extends BaseController
 			}
 			$nilai++;
 		}
+		echo $total;
 
         //     $o++;
         // for ($i = 0; $i < $o; $i++) {
