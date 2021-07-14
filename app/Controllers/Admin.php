@@ -265,7 +265,7 @@ class Admin extends BaseController
             'arrhasil' => $arrhasil
         ];
         // return view('cbr_hasil', $data);
-		return $r;
+		return $arr;
     }
     public function input_cbr()
     {
