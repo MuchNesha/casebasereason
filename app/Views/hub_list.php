@@ -6,14 +6,14 @@
         <div class="col mb-2 d-flex align-items-center">
             <div class="col-4 d-flex">
                 <select onchange="collectData(this)" id="kucing" class="form-control">
-                    <option value="def">--Pilih kucing--</option>
+                    <option value="def">--Pilih Solusi--</option>
                     <?php foreach ($kucing as $k) : ?>
                         <option value="<?= $k['kerusakan_id']; ?>"><?= "[C-" . $k['kerusakan_id'] . "] " . $k['kerusakan_jenis']; ?>
                         </option>
                     <?php endforeach ?>
                 </select>
             </div>
-            <button onclick="tambah()" class="p-2 px-3 ml-2 btn btn-sm btn-primary">Tambah <i class="fa fa-plus"></i></button>
+            <button onclick="tambah()" class="p-2 px-3 ml-2 btn btn-sm btn-secondary">Tambah <i class="fa fa-plus"></i></button>
         </div>
         <table class="table table-bordered table-hover text-center">
             <thead>
