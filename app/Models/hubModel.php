@@ -10,7 +10,7 @@ class hubModel extends Model
     protected $primaryKey = 'hub_id';
     protected $allowedFields =
     [
-        'hub_kucing',
+        'hub_solusi',
         'hub_ciri',
     ];
 }

@@ -64,7 +64,7 @@ class Admin extends BaseController
         // dd(true);
         return json_encode(['status' => 200]);
     }
-    //end kucing
+    //end 
     public function ciri()
     {
         $current = $this->request->getVar('page_table') ? $this->request->getVar('page_table') : 1;
@@ -124,7 +124,7 @@ class Admin extends BaseController
 
     public function hub_cat($id)
     {
-        $res = $this->hub->where("hub_kucing", $id)->findAll();
+        $res = $this->hub->where("hub_solusi", $id)->findAll();
         $j = 0;
         foreach ($res as $r)
             $j++;
@@ -141,7 +141,7 @@ class Admin extends BaseController
         $j = 0;
         foreach ($res as $r)
             $j++;
-        $temp = $this->kucing->find($res['hub_kucing']);
+        $temp = $this->kucing->find($res['hub_solusi']);
         $res['kerusakan_jenis'] = $temp['kerusakan_jenis'];
         $temp = $this->ciri->find($res['hub_ciri']);
         $res['ciri_ciri'] = $temp['ciri_ciri'];
@@ -153,7 +153,7 @@ class Admin extends BaseController
         $var = $this->request->getVar();
         $c = $this->hub->where([
             'hub_ciri' => $var['hub_ciri'],
-            'hub_kucing' => $var['hub_kucing'],
+            'hub_solusi' => $var['hub_solusi'],
         ])->first();
         if ($c != null) {
             session()->setFlashData('finsert', true);
@@ -161,7 +161,7 @@ class Admin extends BaseController
         }
 
         $this->hub->save([
-            'hub_kucing' => $var['hub_kucing'],
+            'hub_solusi' => $var['hub_solusi'],
             'hub_ciri' => $var['hub_ciri'],
         ]);
         session()->setFlashData('insert', true);
@@ -173,7 +173,7 @@ class Admin extends BaseController
         $this->hub->save([
             'hub_id' => $id,
             'hub_ciri' => $var['hub_ciri'],
-            'hub_kucing' => $var['hub_kucing'],
+            'hub_solusi' => $var['hub_solusi'],
         ]);
         session()->setFlashData('update', true);
         return redirect()->to('/hub');
@@ -195,19 +195,19 @@ class Admin extends BaseController
         $ciri = $this->ciri->findAll();
         $tmp = [];
         $o = 0;
-		$nilai = 0;
-		$ciriAll = 0;
-		foreach ($r as $rs){
-			if($rs == "1"){
-				$ciriAll += $ciri[$nilai]['ciri_bobot'];
-			}
-			$temp[$nilai] = [
-				'name' => $ciri[$nilai]['ciri_id'],
-				'bobot' => $ciri[$nilai]['ciri_bobot'],
-				'status' => $r[$nilai],
-			];
-			$nilai++;
-		}
+        $nilai = 0;
+        $ciriAll = 0;
+        foreach ($r as $rs) {
+            if ($rs == "1") {
+                $ciriAll += $ciri[$nilai]['ciri_bobot'];
+            }
+            $temp[$nilai] = [
+                'name' => $ciri[$nilai]['ciri_id'],
+                'bobot' => $ciri[$nilai]['ciri_bobot'],
+                'status' => $r[$nilai],
+            ];
+            $nilai++;
+        }
 
         //     $o++;
         // for ($i = 0; $i < $o; $i++) {
@@ -219,8 +219,8 @@ class Admin extends BaseController
 
         foreach ($cat as $c) {
             $temp2 = [];
-			$total = 0;
-            $hub = $this->hub->where('hub_kucing', $c['kerusakan_id'])->findAll();
+            $total = 0;
+            $hub = $this->hub->where('hub_solusi', $c['kerusakan_id'])->findAll();
             foreach ($hub as $h) {
                 foreach ($temp as $t) {
                     if ($t['name'] == $h['hub_ciri'] && $t['status'] == 1) {

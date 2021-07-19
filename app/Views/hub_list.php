@@ -59,7 +59,7 @@
             <div class="col-12 d-flex justify-content-between flex-column">
                 <div class="form-group col-12 d-flex flex-column align-items-start">
                     <label for="namaf">Jenis Kucing</label>
-                    <select name="hub_kucing" required class=" m-2 form-control" id="namaf">
+                    <select name="hub_solusi" required class=" m-2 form-control" id="namaf">
                   <?php foreach ($kucing as $k) : ?> 
                     <option value="<?= $k['kerusakan_id']; ?>"><?= "[C-" . $k['kerusakan_id'] . "] " . $k['kerusakan_jenis']; ?>
                     </option>
@@ -101,8 +101,8 @@
             <div class="col-12 d-flex justify-content-between flex-column">
                 <div class="form-group col-12 d-flex flex-column align-items-start">
                     <label for="namaf">Jenis Kucing</label>
-                    <select name="hub_kucing" required class=" m-2 form-control" id="namaf">
-                    <option value="${res.hub_kucing}">[C-${res.hub_kucing}] ${res.kerusakan_jenis}</option>
+                    <select name="hub_solusi" required class=" m-2 form-control" id="namaf">
+                    <option value="${res.hub_solusi}">[C-${res.hub_solusi}] ${res.kerusakan_jenis}</option>
                   <?php foreach ($kucing as $k) : ?> 
                     <option value="<?= $k['kerusakan_id']; ?>"><?= "[C-" . $k['kerusakan_id'] . "] " . $k['kerusakan_jenis']; ?>
                     </option>
