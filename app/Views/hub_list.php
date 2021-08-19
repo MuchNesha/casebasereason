@@ -22,8 +22,12 @@
                 <th>Ciri-ciri</th>
                 <th>Aksi</th>
             </thead>
-            <tbody id="tbody">
-
+            <tbody>
+                <?php foreach ($hub as $h) : $no = '1'; ?>
+                    <th>$no++</th>
+                    <th><?= $h['hub_id'] ?></th>
+                    <th><?= $h['ciri_ciri'] ?></th>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>

@@ -4,8 +4,10 @@
 <div class="card">
     <div class="card-body">
         <button onclick="tambah()" style="padding-top:10px;padding-bottom:10px;" class="px-4 btn mb-2 btn-sm btn-secondary">Tambah <i class="fa fa-plus"></i></button>
+        <button type="button" style="padding-top:10px;padding-bottom:10px;" class="px-4 btn mb-2 btn-sm btn-primary action-select" data-target="modal">Edit <i class="fa fa-pencil-alt"></i></button>
         <table class="table table-bordered table-hover text-center">
             <thead>
+                <th>Id</th>
                 <th>Kode</th>
                 <th>Ciri-ciri</th>
                 <th>Bobot</th>
@@ -14,11 +16,12 @@
             <tbody>
                 <?php foreach ($ciri as $k) : ?>
                     <tr>
+                    <td><input type="checkbox" class="check" value="<?= $k['ciri_id'] ?>"></td>
                         <td>K-<?= $k['ciri_id']; ?></td>
                         <td><?= $k['ciri_ciri']; ?></td>
                         <td><?= $k['ciri_bobot']; ?></td>
                         <td>
-                            <button class="btn btn-sm btn-outline-success" onclick="edit(<?= $k['ciri_id']; ?>)"><i class="fa fa-pencil-alt"></i></button>
+                            <!-- <button class="btn btn-sm btn-outline-success" onclick="edit(<?= $k['ciri_id']; ?>)"><i class="fa fa-pencil-alt"></i></button> -->
                             <button class="btn btn-sm btn-danger" onclick="hapus(<?= $k['ciri_id']; ?>)"><i class="fa fa-trash-alt"></i></button>
                         </td>
                     </tr>
@@ -29,6 +32,42 @@
         <div class="row">
             <div class="col-12 d-flex justify-content-center">
                 <?= $pager->links('table', 'user_pager'); ?>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="editciri" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="col-12" action="<?= base_url('Admin/ciri_edit') ?>" method="post" enctype="multipart/form-data">
+                    <?php csrf_field(); ?>
+                    <div class="col-12 d-flex justify-content-between">
+                        <div class="form-group col-12 d-flex flex-column align-items-start">
+                            <label for="nama">Ciri-ciri</label>
+                            <input type="text" name="ciri_ciri" required class=" m-2 form-control" id="kerusakan_jenis">
+                            <input type="hidden" name="ciri_id" required class=" m-2 form-control" id="kerusakan_id">
+                        </div>
+                    </div>
+                    <div class="col-12 d-flex justify-content-between">
+                        <div class="form-group col-12 d-flex flex-column align-items-start">
+                            <label for="namaf">Ciri Bobot</label>
+                            <input type="text" name="ciri_bobot" required class=" m-2 form-control" id="kerusakan_foto">
+                        </div>
+                    </div>
+                    <div class="col-12 d-flex justify-content-end">
+                        <button type="submit" class="my-2 btn btn-primary">Simpan</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -89,6 +128,27 @@
 
         })
     }
+
+    $('.action-select').click(function(e) {
+        e.preventDefault();
+        var arr = [];
+        var checkedvalue = $(".check:checked").val();
+        console.log('checked', checkedvalue);
+        $('#editciri').modal('show');
+        $.ajax({
+            url: '/ciri/get/' + checkedvalue,
+            type: "GET",
+            dataType: "JSON",
+            success: function(result) {
+                $('[name="ciri_ciri"]').val(result.ciri_ciri);
+                $('[name="ciri_bobot"]').val(result.ciri_bobot);
+                $('[name="ciri_id"]').val(result.ciri_id);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert('Data Error');
+            }
+        })
+    });
 
     function edit(id) {
         fetch('/ciri/get/' + id)
