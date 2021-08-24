@@ -17,16 +17,21 @@
         </div>
         <table class="table table-bordered table-hover text-center">
             <thead>
-                <th>No</th>
-                <th>Kode</th>
-                <th>Ciri-ciri</th>
-                <th>Aksi</th>
+                <tr>
+                    <th>No</th>
+                    <th>Kode</th>
+                    <th>Ciri-ciri</th>
+                    <th>Aksi</th>
+                </tr>
             </thead>
             <tbody>
-                <?php foreach ($hub as $h) : $no = '1'; ?>
-                    <th>$no++</th>
-                    <th><?= $h['hub_id'] ?></th>
-                    <th><?= $h['ciri_ciri'] ?></th>
+                <?php foreach ($hub as $h) : $no = 1; ?>
+                    <tr>
+                        <th><?= $h->hub_id ?></th>
+                        <th><?= $h->kerusakan_jenis ?></th>
+                        <th><?= $h->ciri_ciri ?></th>
+                    </tr>
+
                 <?php endforeach; ?>
             </tbody>
         </table>

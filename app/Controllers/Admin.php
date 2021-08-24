@@ -126,8 +126,9 @@ class Admin extends BaseController
         $data = [
             'kucing' => $this->kucing->findAll(),
             'ciri' => $this->ciri->findAll(),
-            'hub' => $model->get_hub()
+            'hub' => $model->get_hub()->getResult()
         ];
+        //$data['hubb'] = $model->hub()->();
         return view('hub_list', $data);
     }
 

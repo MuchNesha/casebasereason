@@ -13,4 +13,11 @@ class hubModel extends Model
         'hub_solusi',
         'hub_ciri',
     ];
+
+    public function hub()
+    {
+        $builder =  $this->db->table('hub');
+        $builder->select('*');
+        return $builder->get();
+    }
 }
