@@ -303,21 +303,7 @@
 
     <!-- FOOTER: DEBUG INFO + COPYRIGHTS -->
 
-    <footer class="position-absolute" style="width:100%;bottom:0;">
 
-
-        <div class="copyrights">
-
-            <p class=" d-flex justify-content-between mt-4">&copy; <?= date('Y') ?> UTS 18-IF-01
-                <a href="https://github.com/harakun24/metodeCBR" class="btn btn-secondary text-white">
-                    <img src="/github.svg" alt=""> github
-                </a>
-
-            </p>
-
-        </div>
-
-    </footer>
 
     <!-- SCRIPTS -->
 
