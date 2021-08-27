@@ -192,7 +192,8 @@ class Admin extends BaseController
     {
         $this->hub->delete($id);
         // dd(true);
-        return json_encode(['status' => 200]);
+        //return json_encode(['status' => 200]);
+        return redirect()->to('/hub');
     }
 
     //metode

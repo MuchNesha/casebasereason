@@ -27,9 +27,13 @@
             <tbody>
                 <?php foreach ($hub as $h) : $no = 1; ?>
                     <tr>
-                        <th><?= $h->hub_id ?></th>
-                        <th><?= $h->kerusakan_jenis ?></th>
-                        <th><?= $h->ciri_ciri ?></th>
+                        <td><?= $h->hub_id ?></td>
+                        <td><?= $h->kerusakan_jenis ?></td>
+                        <td><?= $h->ciri_ciri ?></td>
+                        <td>
+                            <!-- <button type="button" class="btn btn-sm btn-outline-success btn-edit" data-kerusakan_id="<?= $k['kerusakan_id']; ?>" data-kerusakan_jenis="<?= $k['kerusakan_jenis'] ?>" data-kerusakan_foto="<?= $k['kerusakan_foto']; ?>" data-kerusakan_deskripsi="<?= $k['kerusakan_deskripsi']; ?>"><i class="fa fa-pencil-alt"></i></button> -->
+                            <a onclick="deleteConfirm('<?php echo base_url('Admin/hub_hapus/' . $h->hub_id) ?>')" href="#!" class="btn btn-small text-danger"><i class="fa fa-trash"></i> Hapus</a>
+                        </td>
                     </tr>
 
                 <?php endforeach; ?>
@@ -37,7 +41,28 @@
         </table>
     </div>
 </div>
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Apakah Kamu Yakin?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Data yang dihapus tidak akan bisa dikembalikan!.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                <a id="btn-delete" class="btn btn-danger" href="#">Hapus</a>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
+    function deleteConfirm(url) {
+        $('#btn-delete').attr('href', url);
+        $('#deleteModal').modal();
+    }
     <?php if (session()->getFlashData('insert')) : ?>
         Swal.fire({
             icon: 'success',
