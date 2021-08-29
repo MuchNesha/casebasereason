@@ -17,7 +17,7 @@
                 <?php foreach ($ciri as $k) : ?>
                     <tr>
                     <td><input type="checkbox" class="check" value="<?= $k['ciri_id'] ?>"></td>
-                        <td>K-<?= $k['ciri_id']; ?></td>
+                        <td>G-<?= $k['ciri_id']; ?></td>
                         <td><?= $k['ciri_ciri']; ?></td>
                         <td><?= $k['ciri_bobot']; ?></td>
                         <td>

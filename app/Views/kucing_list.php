@@ -27,7 +27,7 @@
                 <?php foreach ($kucing as $k) : ?>
                     <tr>
                         <td><input type="checkbox" class="check" value="<?= $k['kerusakan_id'] ?>"></td>
-                        <td>C-<?= $k['kerusakan_id']; ?></td>
+                        <td>P-<?= $k['kerusakan_id']; ?></td>
                         <td><?= $k['kerusakan_jenis']; ?></td>
                         <td><img class="img-show" src="assets/img/<?= $k['kerusakan_foto']; ?>" alt=""></td>
                         <td>
