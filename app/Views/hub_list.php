@@ -5,9 +5,9 @@
     <div class="card-body">
         <div class="col mb-2 d-flex align-items-center">
             <div class="col-4 d-flex">
-                <select onchange="collectData(this)" id="kucing" class="form-control">
+                <select onchange="collectData(this)" id="rusak" class="form-control">
                     <option value="def">--Pilih Solusi--</option>
-                    <?php foreach ($kucing as $k) : ?>
+                    <?php foreach ($rusak as $k) : ?>
                         <option value="<?= $k['kerusakan_id']; ?>"><?= "[C-" . $k['kerusakan_id'] . "] " . $k['kerusakan_jenis']; ?>
                         </option>
                     <?php endforeach ?>
@@ -31,7 +31,7 @@
                         <td><?= $h->kerusakan_jenis ?></td>
                         <td><?= $h->ciri_ciri ?></td>
                         <td>
-                            <!-- <button type="button" class="btn btn-sm btn-outline-success btn-edit" data-kerusakan_id="<?= $k['kerusakan_id']; ?>" data-kerusakan_jenis="<?= $k['kerusakan_jenis'] ?>" data-kerusakan_foto="<?= $k['kerusakan_foto']; ?>" data-kerusakan_deskripsi="<?= $k['kerusakan_deskripsi']; ?>"><i class="fa fa-pencil-alt"></i></button> -->
+                            <!-- <button type="button" class="btn btn-sm btn-outline-success btn-edit" data-kerusakan_id="<?= $k['kerusakan_id']; ?>" data-kerusakan_jenis="<?= $k['kerusakan_jenis'] ?>" data-kerusakan_foto="<//?= $k['kerusakan_foto']; ?>" data-kerusakan_deskripsi="<?= $k['kerusakan_deskripsi']; ?>"><i class="fa fa-pencil-alt"></i></button> -->
                             <a onclick="deleteConfirm('<?php echo base_url('Admin/hub_hapus/' . $h->hub_id) ?>')" href="#!" class="btn btn-small text-danger"><i class="fa fa-trash"></i> Hapus</a>
                         </td>
                     </tr>
@@ -92,9 +92,9 @@
             <?php csrf_field(); ?>
             <div class="col-12 d-flex justify-content-between flex-column">
                 <div class="form-group col-12 d-flex flex-column align-items-start">
-                    <label for="namaf">Jenis Kucing</label>
+                    <label for="namaf">Jenis rusak</label>
                     <select name="hub_solusi" required class=" m-2 form-control" id="namaf">
-                  <?php foreach ($kucing as $k) : ?> 
+                  <?php foreach ($rusak as $k) : ?> 
                     <option value="<?= $k['kerusakan_id']; ?>"><?= "[C-" . $k['kerusakan_id'] . "] " . $k['kerusakan_jenis']; ?>
                     </option>
                   <?php endforeach ?>
@@ -134,10 +134,10 @@
             <?php csrf_field(); ?>
             <div class="col-12 d-flex justify-content-between flex-column">
                 <div class="form-group col-12 d-flex flex-column align-items-start">
-                    <label for="namaf">Jenis Kucing</label>
+                    <label for="namaf">Jenis rusak</label>
                     <select name="hub_solusi" required class=" m-2 form-control" id="namaf">
                     <option value="${res.hub_solusi}">[C-${res.hub_solusi}] ${res.kerusakan_jenis}</option>
-                  <?php foreach ($kucing as $k) : ?> 
+                  <?php foreach ($rusak as $k) : ?> 
                     <option value="<?= $k['kerusakan_id']; ?>"><?= "[C-" . $k['kerusakan_id'] . "] " . $k['kerusakan_jenis']; ?>
                     </option>
                   <?php endforeach ?>

@@ -20,18 +20,17 @@
                 <th>id</th>
                 <th>Kode</th>
                 <th>Jenis</th>
-                <th>Foto</th>
                 <th>Aksi</th>
             </thead>
             <tbody>
-                <?php foreach ($kucing as $k) : ?>
+                <?php foreach ($rusak as $k) : ?>
                     <tr>
                         <td><input type="checkbox" class="check" value="<?= $k['kerusakan_id'] ?>"></td>
                         <td>P-<?= $k['kerusakan_id']; ?></td>
                         <td><?= $k['kerusakan_jenis']; ?></td>
-                        <td><img class="img-show" src="assets/img/<?= $k['kerusakan_foto']; ?>" alt=""></td>
+                        
                         <td>
-                            <!-- <button type="button" class="btn btn-sm btn-outline-success btn-edit" data-kerusakan_id="<?= $k['kerusakan_id']; ?>" data-kerusakan_jenis="<?= $k['kerusakan_jenis'] ?>" data-kerusakan_foto="<?= $k['kerusakan_foto']; ?>" data-kerusakan_deskripsi="<?= $k['kerusakan_deskripsi']; ?>"><i class="fa fa-pencil-alt"></i></button> -->
+                            <!-- <button type="button" class="btn btn-sm btn-outline-success btn-edit" data-kerusakan_id="<?= $k['kerusakan_id']; ?>" data-kerusakan_jenis="<?= $k['kerusakan_jenis'] ?>" data-kerusakan_foto="<//?= $k['kerusakan_foto']; ?>" data-kerusakan_deskripsi="<?= $k['kerusakan_deskripsi']; ?>"><i class="fa fa-pencil-alt"></i></button> -->
                             <button class="btn btn-sm btn-danger" onclick="hapus(<?= $k['kerusakan_id']; ?>)"><i class="fa fa-trash-alt"></i></button>
                         </td>
                     </tr>
@@ -64,7 +63,7 @@
         </div>
     </div>
 </div> -->
-<div class="modal fade" id="editkucing" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="editrusak" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -74,7 +73,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class="col-12" action="<?= base_url('Admin/kucing_edit') ?>" method="post" enctype="multipart/form-data">
+                <form class="col-12" action="<?= base_url('Admin/rusak_edit') ?>" method="post" enctype="multipart/form-data">
                     <?php csrf_field(); ?>
                     <div class="col-12 d-flex justify-content-between">
                         <div class="form-group col-12 d-flex flex-column align-items-start">
@@ -83,12 +82,7 @@
                             <input type="hidden" name="kerusakan_id" required class=" m-2 form-control" id="kerusakan_id">
                         </div>
                     </div>
-                    <div class="col-12 d-flex justify-content-between">
-                        <div class="form-group col-12 d-flex flex-column align-items-start">
-                            <label for="namaf">Foto</label>
-                            <input type="text" name="kerusakan_foto" required class=" m-2 form-control" id="kerusakan_foto">
-                        </div>
-                    </div>
+                 
                     <div class="col-12 d-flex justify-content-between">
                         <div class="form-group col-12 d-flex flex-column align-items-start">
                             <label for="namad">Deskripsi</label>
@@ -143,14 +137,14 @@
     //         $('.kerusakan_deskripsi').val(kd);
     //         // Call Modal Edit
     //         $(window).load(function() {
-    //             $('#editkucing').modal('show');
+    //             $('#editrusak').modal('show');
     //         });
     //     });
     // });
 
     function tambah() {
         let view = `
-    <form class="col-12" action="<?= route_to('kucing_save'); ?>" method="post">
+    <form class="col-12" action="<?= route_to('rusak_save'); ?>" method="post">
             <?php csrf_field(); ?>
             <div class="col-12 d-flex justify-content-between">
                 <div class="form-group col-12 d-flex flex-column align-items-start">
@@ -158,12 +152,7 @@
                     <input type="text" name="kerusakan_jenis" required class=" m-2 form-control" id="nama">
                 </div>
             </div>
-            <div class="col-12 d-flex justify-content-between">
-                <div class="form-group col-12 d-flex flex-column align-items-start">
-                    <label for="namaf">Foto</label>
-                    <input type="text" name="kerusakan_foto" required class=" m-2 form-control" id="namaf">
-                </div>
-            </div>
+           
             <div class="col-12 d-flex justify-content-between">
                 <div class="form-group col-12 d-flex flex-column align-items-start">
                     <label for="namad">Deskripsi</label>
@@ -188,14 +177,14 @@
         var arr = [];
         var checkedvalue = $(".check:checked").val();
         console.log('checked', checkedvalue);
-        $('#editkucing').modal('show');
+        $('#editrusak').modal('show');
         $.ajax({
-            url: '/kucing/get/' + checkedvalue,
+            url: '/rusak/get/' + checkedvalue,
             type: "GET",
             dataType: "JSON",
             success: function(result) {
                 $('[name="kerusakan_jenis"]').val(result.kerusakan_jenis);
-                $('[name="kerusakan_foto"]').val(result.kerusakan_foto);
+                
                 $('[name="kerusakan_id"]').val(result.kerusakan_id);
                 $('[name="kerusakan_deskripsi"]').val(result.kerusakan_deskripsi);
             },
@@ -207,11 +196,11 @@
 
     function edit(id) {
 
-        fetch('/kucing/get/' + id)
+        fetch('/rusak/get/' + id)
             // .then(res => JSON.parse(res))
             .then(res => {
                 let view = `
-                <form class="col-12" action="/kucing/edit/` + id + `" method="post">
+                <form class="col-12" action="/rusak/edit/` + id + `" method="post">
                 <?php csrf_field(); ?>
                     <div class="col-12 d-flex justify-content-between">
                         <div class="form-group col-12 d-flex flex-column align-items-start">
@@ -220,12 +209,8 @@
                             <input type="hidden" name="kerusakan_id" required class=" m-2 form-control" id="id">
                         </div>
                     </div>
-                    <div class="col-12 d-flex justify-content-between">
-                        <div class="form-group col-12 d-flex flex-column align-items-start">
-                            <label for="namaf">Foto</label>
-                            <input type="text" name="kerusakan_foto" required class=" m-2 form-control" id="kerusakan_foto">
-                        </div>
-                    </div>
+                    
+                
                     <div class="col-12 d-flex justify-content-between">
                         <div class="form-group col-12 d-flex flex-column align-items-start">
                             <label for="namad">Deskripsi</label>
@@ -258,7 +243,7 @@
             confirmButtonText: 'Ya, lanjut'
         }).then((result) => {
             if (result.value) {
-                fetch('/kucing/hapus/' + id)
+                fetch('/rusak/hapus/' + id)
                     .then(res => res.json())
                     .then(res => {
                         Swal.fire({

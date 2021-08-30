@@ -33,11 +33,11 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->addRedirect('/admin/(:any)', '/');
-$routes->get('/kucing', 'Admin::kucing', ['as' => 'kucing_list']);
-$routes->post('/kucing/tambah', 'Admin::kucing_add', ['as' => 'kucing_save']);
-$routes->add('/kucing/hapus/(:num)', 'Admin::kucing_hapus/$1', ['as' => 'kucing_del']);
-$routes->add('/kucing/edit/(:num)', 'Admin::kucing_edit/$1', ['as' => 'kucing_edit']);
-$routes->add('/kucing/get/(:num)', 'Admin::kucing_get/$1', ['as' => 'kucing_get']);
+$routes->get('/rusak', 'Admin::rusak', ['as' => 'rusak_list']);
+$routes->post('/rusak/tambah', 'Admin::rusak_add', ['as' => 'rusak_save']);
+$routes->add('/rusak/hapus/(:num)', 'Admin::rusak_hapus/$1', ['as' => 'rusak_del']);
+$routes->add('/rusak/edit/(:num)', 'Admin::rusak_edit/$1', ['as' => 'rusak_edit']);
+$routes->add('/rusak/get/(:num)', 'Admin::rusak_get/$1', ['as' => 'rusak_get']);
 
 $routes->get('/ciri', 'Admin::ciri', ['as' => 'ciri_list']);
 $routes->post('/ciri/tambah', 'Admin::ciri_add', ['as' => 'ciri_save']);

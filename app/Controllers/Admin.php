@@ -2,14 +2,14 @@
 
 namespace App\Controllers;
 
-use App\Models\kucingModel;
+use App\Models\rusakModel;
 use CodeIgniter\Config\View;
 
 class Admin extends BaseController
 {
     public function __construct()
     {
-        $this->kucing = new \App\Models\kucingModel();
+        $this->rusak = new \App\Models\rusakModel();
         $this->ciri = new \App\Models\ciriModel();
         $this->hub = new \App\Models\hubModel();
         $this->db      = \Config\Database::connect();
@@ -18,55 +18,55 @@ class Admin extends BaseController
     {
         return view('homepage.php');
     }
-    public function kucing()
+    public function rusak()
     {
-        $model = new kucingModel(); 
+        $model = new rusakModel();
         $current = $this->request->getVar('page_table') ? $this->request->getVar('page_table') : 1;
         $data = [
-            'kucing' => $this->kucing->paginate(4, 'table'),
-            'pager' => $this->kucing->pager,
+            'rusak' => $this->rusak->paginate(4, 'table'),
+            'pager' => $this->rusak->pager,
             'current' => $current,
         ];
-        $data['kucing2'] = $model->get_kucing()->getResult();
-        return view('kucing_list', $data);
+        $data['rusak2'] = $model->get_rusak()->getResult();
+        return view('rusak_list', $data);
     }
-    public function kucing_get($id)
+    public function rusak_get($id)
     {
-        // return $this->kucing->get($id)->row();
-        echo json_encode($this->kucing->find($id));
+        // return $this->rusak->get($id)->row();
+        echo json_encode($this->rusak->find($id));
     }
-    public function kucing_add()
+    public function rusak_add()
     {
         $var = $this->request->getVar();
-        $c = $this->kucing->where('kerusakan_jenis', $var['kerusakan_jenis'])->first();
+        $c = $this->rusak->where('kerusakan_jenis', $var['kerusakan_jenis'])->first();
         if ($c != null) {
             session()->setFlashData('finsert', true);
-            return redirect()->to('/kucing');
+            return redirect()->to('/rusak');
         }
-        $this->kucing->save([
+        $this->rusak->save([
             'kerusakan_jenis' => $var['kerusakan_jenis'],
-            'kerusakan_foto' => $var['kerusakan_foto'],
+            //'kerusakan_foto' => $var['kerusakan_foto'],
             'kerusakan_deskripsi' => $var['kerusakan_deskripsi'],
         ]);
         session()->setFlashData('insert', true);
-        return redirect()->to('/kucing');
+        return redirect()->to('/rusak');
     }
-    public function kucing_edit()
+    public function rusak_edit()
     {
-        $model = new kucingModel();
+        $model = new rusakModel();
         $id = $this->request->getPost('kerusakan_id');
         $data = array(
             'kerusakan_jenis'        => $this->request->getPost('kerusakan_jenis'),
-            'kerusakan_foto'       => $this->request->getPost('kerusakan_foto'),
+           // 'kerusakan_foto'       => $this->request->getPost('kerusakan_foto'),
             'kerusakan_deskripsi' => $this->request->getPost('kerusakan_deskripsi'),
         );
-        $model->updatekucing($data, $id);
+        $model->updaterusak($data, $id);
         session()->setFlashData('update', true);
-        return redirect()->to('/kucing');
+        return redirect()->to('/rusak');
     }
-    public function kucing_hapus($id)
+    public function rusak_hapus($id)
     {
-        $this->kucing->delete($id);
+        $this->rusak->delete($id);
         // dd(true);
         return json_encode(['status' => 200]);
     }
@@ -91,7 +91,7 @@ class Admin extends BaseController
         $c = $this->ciri->where('ciri_ciri', $var['ciri_ciri'])->first();
         if ($c != null) {
             session()->setFlashData('finsert', true);
-            return redirect()->to('/kucing');
+            return redirect()->to('/rusak');
         }
         $this->ciri->save([
             'ciri_ciri' => $var['ciri_ciri'],
@@ -102,7 +102,7 @@ class Admin extends BaseController
     }
     public function ciri_edit()
     {
-        $model = new kucingModel();
+        $model = new rusakModel();
         $id = $this->request->getPost('ciri_id');
         $data = array(
             'ciri_ciri'        => $this->request->getPost('ciri_ciri'),
@@ -122,9 +122,9 @@ class Admin extends BaseController
 
     public function hub()
     {
-        $model = new kucingModel();
+        $model = new rusakModel();
         $data = [
-            'kucing' => $this->kucing->findAll(),
+            'rusak' => $this->rusak->findAll(),
             'ciri' => $this->ciri->findAll(),
             'hub' => $model->get_hub()->getResult()
         ];
@@ -151,7 +151,7 @@ class Admin extends BaseController
         $j = 0;
         foreach ($res as $r)
             $j++;
-        $temp = $this->kucing->find($res['hub_solusi']);
+        $temp = $this->rusak->find($res['hub_solusi']);
         $res['kerusakan_jenis'] = $temp['kerusakan_jenis'];
         $temp = $this->ciri->find($res['hub_ciri']);
         $res['ciri_ciri'] = $temp['ciri_ciri'];
@@ -202,7 +202,7 @@ class Admin extends BaseController
         $arrhasil = [];
         $fhasil = 0.00;
         $r = str_split($arr);
-        $cat = $this->kucing->findAll();
+        $cat = $this->rusak->findAll();
         $ciri = $this->ciri->findAll();
         $tmp = [];
         $o = 0;
@@ -266,13 +266,13 @@ class Admin extends BaseController
             // d($total);
             $hasil = round(($total / $ciriAll), 2);
             array_push($arrhasil, [
-                'kucing' => $c['kerusakan_jenis'],
-                'foto' => $c['kerusakan_foto'],
+                'rusak' => $c['kerusakan_jenis'],
+                //'foto' => $c['kerusakan_foto'],
                 'deskripsi' => $c['kerusakan_deskripsi'],
                 'hasil' => $hasil
             ]);
             array_push($tmp, [
-                'kucing' => $c['kerusakan_jenis'],
+                'rusak' => $c['kerusakan_jenis'],
                 'data' => $temp2,
                 'total' => $total,
                 'all' => $ciriAll,

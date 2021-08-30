@@ -276,8 +276,8 @@
                 <li class="menu-item hidden"><a href="<?= route_to('cbr_form'); ?>"><i class="fa fa-chart-bar"></i>
                         Pengujian</a>
                 </li>
-                <li class="menu-item hidden"><a href="<?= route_to('kucing_list'); ?>"><i class="fa fa-motorcycle"></i>
-                        Sepeda Motor</a></li>
+                <li class="menu-item hidden"><a href="<?= route_to('rusak_list'); ?>"><i class="fa fa-motorcycle"></i>
+                        Kerusakan</a></li>
                 <li class="menu-item hidden"><a href="<?= route_to('ciri_list'); ?>"><i class="fa fa-eye"></i> Ciri</a>
                 </li>
                 <li class="menu-item hidden"><a href="<?= route_to('hub_list'); ?>"><i class="fa fa-code-branch"></i>

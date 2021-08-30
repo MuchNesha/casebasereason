@@ -55,12 +55,7 @@
                             <input type="hidden" name="ciri_id" required class=" m-2 form-control" id="kerusakan_id">
                         </div>
                     </div>
-                    <div class="col-12 d-flex justify-content-between">
-                        <div class="form-group col-12 d-flex flex-column align-items-start">
-                            <label for="namaf">Ciri Bobot</label>
-                            <input type="text" name="ciri_bobot" required class=" m-2 form-control" id="kerusakan_foto">
-                        </div>
-                    </div>
+                  
                     <div class="col-12 d-flex justify-content-end">
                         <button type="submit" class="my-2 btn btn-primary">Simpan</button>
                     </div>
