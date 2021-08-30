@@ -1,0 +1,41 @@
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'[TRANSMISI] Rantai Kendor ','5');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'[TRANSMISI] Rantai Berisik','5');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'[TRANSMISI] Rantai Kering','3');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'[TRANSMISI] Rantai Kotor','3');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'[TRANSMISI] Rantai Terasa Seret','3');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'[TRANSMISI] Rantai Terasa Tegang','5');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'[TRANSMISI] Rantai Permukaan Aus','7');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'Tarikan Berat','5');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'[TRANSMISI] Gear Kotor','3');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'[TRANSMISI] Mata Gear Lincip','7');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'[TRANSMISI] Mata Gear Bogang','7');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'[TRANSMISI] Rantai gampang kendor','7');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'Brebet','7');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'Gas tidak stabil','5');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'Tarikan gas lambat','7');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'Susah Distarter','5');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'Starter lemah','5');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'Distarter susah hidup','5');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'Distarter bunyi \"tuk tuk\"','5');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'Starter macet','7');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'[FRAME] Kemudi kaku','5');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'[FRAME] Kemudi tidak stabil','5');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'[FRAME] Kemudi bunyi di jalan berlubang','5');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'[FRAME] Rem blong/tidak berfungsi','5');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'[FRAME] Penekanan rem terlalu dalam','5');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'[FRAME] Rem bunyi','7');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'[FRAME] Rem macet','5');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'[FRAME] Roda seret diputar','5');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'[FRAME] Rem rembes','3');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'[ENGINE] Mesin kasar','5');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'[ENGINE] Mesin bergetar lebih','3');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'[ENGINE] Mesin cepat panas','5');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'Tidak akselerasi','5');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'Tenaga kurang','5');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'[ENGINE] Ganti perseneling susah','5');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'[ENGINE] Perseneling susah ke N','5');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'[ENGINE] Rembesan pada mesin','7');
+INSERT INTO ciri (ciri_id,ciri_ciri,ciri_bobot) VALUES (NULL,'[ENGINE] Kipas pendingin radiator ON','5');
+
+
+https://tools.perceptus.ca/text-wiz.php?ops=7
