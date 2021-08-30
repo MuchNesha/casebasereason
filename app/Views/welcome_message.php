@@ -278,7 +278,7 @@
                 </li>
                 <li class="menu-item hidden"><a href="<?= route_to('rusak_list'); ?>"><i class="fa fa-motorcycle"></i>
                         Kerusakan</a></li>
-                <li class="menu-item hidden"><a href="<?= route_to('ciri_list'); ?>"><i class="fa fa-eye"></i> Ciri</a>
+                <li class="menu-item hidden"><a href="<?= route_to('ciri_list'); ?>"><i class="fa fa-eye"></i> Ciri Gejala</a>
                 </li>
                 <li class="menu-item hidden"><a href="<?= route_to('hub_list'); ?>"><i class="fa fa-code-branch"></i>
                         Hubungan</a></li>

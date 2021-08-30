@@ -9,7 +9,7 @@
             <thead>
                 <th>Id</th>
                 <th>Kode</th>
-                <th>Ciri-ciri</th>
+                <th>Nama Gejala / Kasus</th>
                 <th>Bobot</th>
                 <th>Aksi</th>
             </thead>
@@ -50,7 +50,7 @@
                     <?php csrf_field(); ?>
                     <div class="col-12 d-flex justify-content-between">
                         <div class="form-group col-12 d-flex flex-column align-items-start">
-                            <label for="nama">Ciri-ciri</label>
+                            <label for="nama">Nama Gejala / Kasus</label>
                             <input type="text" name="ciri_ciri" required class=" m-2 form-control" id="kerusakan_jenis">
                             <input type="hidden" name="ciri_id" required class=" m-2 form-control" id="kerusakan_id">
                         </div>
@@ -87,7 +87,7 @@
             icon: 'error',
             title: 'Gagal menambah data',
             showConfirmButton: true,
-            text: "ciri sudah pernah ditambahkan",
+            text: "Gejala/Kasus sudah pernah ditambahkan",
         })
     <?php endif ?>
 
@@ -97,7 +97,7 @@
             <?php csrf_field(); ?>
             <div class="col-12 d-flex justify-content-between">
                 <div class="form-group col-12 d-flex flex-column align-items-start">
-                    <label for="nama">ciri</label>
+                    <label for="nama">Gejala/Kasus</label>
                     <input type="text" name="ciri_ciri" required class=" m-2 form-control" id="nama">
                 </div>
             </div>

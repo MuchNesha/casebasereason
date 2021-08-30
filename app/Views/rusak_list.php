@@ -19,7 +19,7 @@
             <thead>
                 <th>id</th>
                 <th>Kode</th>
-                <th>Jenis</th>
+                <th>Kerusakan</th>
                 <th>Aksi</th>
             </thead>
             <tbody>
@@ -77,7 +77,7 @@
                     <?php csrf_field(); ?>
                     <div class="col-12 d-flex justify-content-between">
                         <div class="form-group col-12 d-flex flex-column align-items-start">
-                            <label for="nama">Jenis</label>
+                            <label for="nama">Kerusakan</label>
                             <input type="text" name="kerusakan_jenis" required class=" m-2 form-control" id="kerusakan_jenis">
                             <input type="hidden" name="kerusakan_id" required class=" m-2 form-control" id="kerusakan_id">
                         </div>
@@ -120,7 +120,7 @@
             icon: 'error',
             title: 'Gagal menambah data',
             showConfirmButton: true,
-            text: "Jenis sudah pernah ditambahkan",
+            text: "Kerusakan sudah pernah ditambahkan",
         })
     <?php endif ?>
     // $(document).ready(function() {
@@ -148,7 +148,7 @@
             <?php csrf_field(); ?>
             <div class="col-12 d-flex justify-content-between">
                 <div class="form-group col-12 d-flex flex-column align-items-start">
-                    <label for="nama">Jenis</label>
+                    <label for="nama">Kerusakan</label>
                     <input type="text" name="kerusakan_jenis" required class=" m-2 form-control" id="nama">
                 </div>
             </div>
@@ -204,7 +204,7 @@
                 <?php csrf_field(); ?>
                     <div class="col-12 d-flex justify-content-between">
                         <div class="form-group col-12 d-flex flex-column align-items-start">
-                            <label for="nama">Jenis</label>
+                            <label for="nama">Kerusakan</label>
                             <input type="text" name="kerusakan_jenis" value="${$res.kerusakan_jenis}"  required class=" m-2 form-control" id="kerusakan_jenis">
                             <input type="hidden" name="kerusakan_id" required class=" m-2 form-control" id="id">
                         </div>

@@ -8,7 +8,7 @@
                 <select onchange="collectData(this)" id="rusak" class="form-control">
                     <option value="def">--Pilih Solusi--</option>
                     <?php foreach ($rusak as $k) : ?>
-                        <option value="<?= $k['kerusakan_id']; ?>"><?= "[C-" . $k['kerusakan_id'] . "] " . $k['kerusakan_jenis']; ?>
+                        <option value="<?= $k['kerusakan_id']; ?>"><?= "[P-" . $k['kerusakan_id'] . "] " . $k['kerusakan_jenis']; ?>
                         </option>
                     <?php endforeach ?>
                 </select>
@@ -20,7 +20,7 @@
                 <tr>
                     <th>No</th>
                     <th>Kode</th>
-                    <th>Ciri-ciri</th>
+                    <th>Ciri Gejala/Kasus</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -82,7 +82,7 @@
             icon: 'error',
             title: 'Gagal menambah data',
             showConfirmButton: true,
-            text: "ciri sudah pernah ditambahkan",
+            text: "ciri/gejala sudah pernah ditambahkan",
         })
     <?php endif ?>
 
@@ -95,17 +95,17 @@
                     <label for="namaf">Jenis rusak</label>
                     <select name="hub_solusi" required class=" m-2 form-control" id="namaf">
                   <?php foreach ($rusak as $k) : ?> 
-                    <option value="<?= $k['kerusakan_id']; ?>"><?= "[C-" . $k['kerusakan_id'] . "] " . $k['kerusakan_jenis']; ?>
+                    <option value="<?= $k['kerusakan_id']; ?>"><?= "[P-" . $k['kerusakan_id'] . "] " . $k['kerusakan_jenis']; ?>
                     </option>
                   <?php endforeach ?>
                     </select>
                 </div>
 
                 <div class="form-group col-12 d-flex flex-column align-items-start">
-                    <label for="namaf">Ciri-ciri</label>
+                    <label for="namaf">Ciri gejala/kasus</label>
                     <select name="hub_ciri" required class=" m-2 form-control" id="namaf">
                   <?php foreach ($ciri as $k) : ?> 
-                    <option value="<?= $k['ciri_id']; ?>"><?= "[K-" . $k['ciri_id'] . "] " . $k['ciri_ciri']; ?>
+                    <option value="<?= $k['ciri_id']; ?>"><?= "[G-" . $k['ciri_id'] . "] " . $k['ciri_ciri']; ?>
                     </option>
                   <?php endforeach ?>
                     </select>
@@ -136,20 +136,20 @@
                 <div class="form-group col-12 d-flex flex-column align-items-start">
                     <label for="namaf">Jenis rusak</label>
                     <select name="hub_solusi" required class=" m-2 form-control" id="namaf">
-                    <option value="${res.hub_solusi}">[C-${res.hub_solusi}] ${res.kerusakan_jenis}</option>
+                    <option value="${res.hub_solusi}">[P-${res.hub_solusi}] ${res.kerusakan_jenis}</option>
                   <?php foreach ($rusak as $k) : ?> 
-                    <option value="<?= $k['kerusakan_id']; ?>"><?= "[C-" . $k['kerusakan_id'] . "] " . $k['kerusakan_jenis']; ?>
+                    <option value="<?= $k['kerusakan_id']; ?>"><?= "[P-" . $k['kerusakan_id'] . "] " . $k['kerusakan_jenis']; ?>
                     </option>
                   <?php endforeach ?>
                     </select>
                 </div>
 
                 <div class="form-group col-12 d-flex flex-column align-items-start">
-                    <label for="namaf">Ciri-ciri</label>
+                    <label for="namaf">Ciri gejala/kasus</label>
                     <select name="hub_ciri" required class=" m-2 form-control" id="namaf">
-                    <option value="${res.hub_ciri}">[K-${res.hub_ciri}] ${res.ciri_ciri}</option>
+                    <option value="${res.hub_ciri}">[G-${res.hub_ciri}] ${res.ciri_ciri}</option>
                   <?php foreach ($ciri as $k) : ?> 
-                    <option value="<?= $k['ciri_id']; ?>"><?= "[K-" . $k['ciri_id'] . "] " . $k['ciri_ciri']; ?>
+                    <option value="<?= $k['ciri_id']; ?>"><?= "[G-" . $k['ciri_id'] . "] " . $k['ciri_ciri']; ?>
                     </option>
                   <?php endforeach ?>
                     </select>
@@ -222,7 +222,7 @@
                             ciri = document.createElement("td");
                             aksi = document.createElement("td");
                             no.innerHTML = c
-                            kode.innerHTML = "K-" + v.hub_ciri
+                            kode.innerHTML = "G-" + v.hub_ciri
                             ciri.innerHTML = v.ciri_nama
                             aksi.innerHTML = `
                         <button class="btn btn-sm btn-outline-success" onclick="edit(${v.hub_id})"><i
