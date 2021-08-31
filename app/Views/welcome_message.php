@@ -266,7 +266,7 @@
                 <li class="logo text-primary">
                     <h1>
                         <i class="fa fa-motorcycle"></i>
-                        Kerusakan sepeda motors
+                        Kerusakan sepeda motor
                     </h1>
                 </li>
                 <li class="menu-toggle">
