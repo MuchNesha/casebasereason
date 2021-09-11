@@ -289,13 +289,24 @@ class Admin extends BaseController
             'tmp' => $tmp,
             'arrhasil' => $arrhasil
         ];
+        $dataaa = array(
+            
+            'nama' = $this->request->getPost('nama'),
+            'alamat' = $this->request->getPost('alamat')
+        );
         return view('cbr_hasil', $data);
     }
     public function input_cbr()
     {
+        $data2 = [
+            'nama' => $this->request->getPost('nama'),
+            'alamat' => $this->request->getPost('alamat')
+        ];
         $data = [
             'ciri' => $this->ciri->findAll()
         ];
+        $data['history'] = $data2;
         return view('cbr_form', $data);
     }
+
 }
