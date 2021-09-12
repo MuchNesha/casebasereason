@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\gejalaModel;
 use App\Models\rusakModel;
 use CodeIgniter\Config\View;
 
@@ -12,6 +13,7 @@ class Admin extends BaseController
         $this->rusak = new \App\Models\rusakModel();
         $this->ciri = new \App\Models\ciriModel();
         $this->hub = new \App\Models\hubModel();
+        $this->riwayat = new \App\Models\riwayatModel();
         $this->db      = \Config\Database::connect();
     }
     public function index()
@@ -57,7 +59,7 @@ class Admin extends BaseController
         $id = $this->request->getPost('kerusakan_id');
         $data = array(
             'kerusakan_jenis'        => $this->request->getPost('kerusakan_jenis'),
-           // 'kerusakan_foto'       => $this->request->getPost('kerusakan_foto'),
+            // 'kerusakan_foto'       => $this->request->getPost('kerusakan_foto'),
             'kerusakan_deskripsi' => $this->request->getPost('kerusakan_deskripsi'),
         );
         $model->updaterusak($data, $id);
@@ -289,24 +291,66 @@ class Admin extends BaseController
             'tmp' => $tmp,
             'arrhasil' => $arrhasil
         ];
+
+
         $dataaa = array(
-            
-            'nama' = $this->request->getPost('nama'),
-            'alamat' = $this->request->getPost('alamat')
+            'nama' => $this->request->getPost('nama'),
+            'alamat' => $this->request->getPost('alamat')
         );
         return view('cbr_hasil', $data);
+    }
+
+    public function rw_gejala()
+    {
+        $rw_gejala = new gejalaModel();
+        foreach ($this->request->getPost('gejala_kerusakan') as $var) {
+            $rw_gejala->insert([
+                'id_riwayat' => $this->request->getPost('id_riwayat'),
+                'gejala_kerusakan' => $this->request->getPost('gejala_kerusakan')
+            ]);
+        }
+    }
+
+    public function input_riwayat()
+    {
+        $var = $this->request->getVar();
+        // $c = $this->riwayat->where([
+        //     'nama' => $var['nama'],
+        //     'alamat' => $var['alamat'],
+        // ])->first();
+        // if ($c != null) {
+        //     session()->setFlashData('finsert', true);
+        //     return redirect()->to('/');
+        // }
+
+        $this->riwayat->save([
+            'id_riwayat' => $this->request->getPost('id_riwayat'),
+            'nama' => $this->request->getPost('nama'),
+            'alamat' => $this->request->getPost('alamat'),
+        ]);
+
+        $rw_gejala = new gejalaModel();
+        foreach ($this->request->getPost('gejala_kerusakan') as $var) {
+            $rw_gejala->insert([
+                'id_riwayat' => $this->request->getPost('id_riwayat'),
+                'gejala_kerusakan' => $this->request->getPost('gejala_kerusakan')
+            ]);
+        }
+        // session()->setFlashData('insert', true);
+        // return redirect()->to('/pengujian/' . $this->request->getPost('id_riwayat'));
     }
     public function input_cbr()
     {
         $data2 = [
+            'id_riwayat' => $this->request->getPost('id_riwayat'),
             'nama' => $this->request->getPost('nama'),
             'alamat' => $this->request->getPost('alamat')
         ];
+
         $data = [
             'ciri' => $this->ciri->findAll()
         ];
         $data['history'] = $data2;
         return view('cbr_form', $data);
     }
-
 }
