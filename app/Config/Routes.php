@@ -53,8 +53,11 @@ $routes->add('/hub/edit/(:num)', 'Admin::hub_edit/$1', ['as' => 'hub_edit']);
 $routes->add('/hub/get/(:num)', 'Admin::hub_get/$1', ['as' => 'hub_get']);
 
 $routes->post('/riwayat_save', 'Admin::input_riwayat', ['as' => 'save_riwayat']);
+$routes->post('/data_diri', 'Admin::datadiri', ['as' => 'save_datadiri']);
 $routes->get('/cbr/(:num)', 'Admin::cbr/$1', ['as' => 'cbr']);
 $routes->add('/pengujian', 'Admin::input_cbr', ['as' => 'cbr_form']);
+$routes->post('/simpan_riwayat', 'Admin::simpan_riwayat', ['as' => 'save_data_rw']);
+$routes->get('/view_riwayat', 'Admin::view_riwayat', ['as' => 'view_rw']);
 /**
  * --------------------------------------------------------------------
  * Additional Routing
