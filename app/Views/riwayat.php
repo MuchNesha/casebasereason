@@ -13,7 +13,7 @@
                 <th>Hasil Diagnosa</th>
                 <th>Nilai</th>
                 <th>Persen</th>
-                <th>Aksi</th>
+                <th>Pemilihan Ciri ciri / Gejala</th>
             </thead>
             <tbody>
                 <?php foreach ($riwayat as $r) : ?>
@@ -25,7 +25,7 @@
                         <td><?= $r['nilai'] ?></td>
                         <td><?= $r['nilai'] * 100 ?>%</td>
                         <td>
-                            <a href="#kerusakan<?= $r['id_riwayat'] ?>" data-toggle="modal" class="btn btn-sm btn-danger">Lihat Kerusakan</a>
+                            <a href="#kerusakan<?= $r['id_riwayat'] ?>" data-toggle="modal" class="btn btn-sm btn-danger">Lihat pemilihan Ciri</a>
                         </td>
                     </tr>
                 <?php endforeach ?>

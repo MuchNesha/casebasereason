@@ -90,3 +90,6 @@ INSERT INTO hub (hub_id,hub_solusi,hub_ciri) VALUES (NULL,'40','32');
 INSERT INTO hub (hub_id,hub_solusi,hub_ciri) VALUES (NULL,'40','38');
 INSERT INTO hub (hub_id,hub_solusi,hub_ciri) VALUES (NULL,'41','32');
 INSERT INTO hub (hub_id,hub_solusi,hub_ciri) VALUES (NULL,'41','38');
+
+
+nWARN NOT FIXED
