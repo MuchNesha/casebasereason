@@ -315,7 +315,7 @@ class Admin extends BaseController
             'nilai' => $this->request->getPost('nilai')
         ]);
         session()->setFlashData('insert', true);
-        return redirect()->to('/');
+        return redirect()->to('/view_riwayat');
     }
 
     public function datadiri()
