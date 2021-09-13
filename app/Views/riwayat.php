@@ -52,7 +52,7 @@
                 <div class="modal-body">
                     <div class="card">
                         <div class="card-header">
-                            Kerusakan
+                            Kerusakan / gejala yang dialami : 
                         </div>
                         <div class="card-body">
                             <blockquote class="blockquote mb-0">
