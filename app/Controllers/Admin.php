@@ -365,7 +365,7 @@ class Admin extends BaseController
         $mdl = new riwayatModel();
         $current = $this->request->getVar('page_table') ? $this->request->getVar('page_table') : 1;
         $data = [
-            'riwayat' => $this->riwayat->paginate(4, 'table'),
+            'riwayat' => $this->riwayat->paginate(5, 'table'),
             'pager' => $this->riwayat->pager,
             'current' => $current,
             'kerusakan' => $mdl->get_all()->getResult(),

@@ -68,4 +68,14 @@
         </div>
     </div>
 <?php endforeach ?>
+<script>
+    <?php if (session()->getFlashData('insert')) : ?>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil disimpan',
+            showConfirmButton: false,
+            timer: 950
+        })
+    <?php endif ?>
+</script>
 <?= $this->endSection() ?>
