@@ -1,7 +1,7 @@
 <?= $this->extend('welcome_message') ?>
 <?= $this->section('content') ?>
+<script src="assets/js/sweetalert2-all.js"></script>
 <div class="pb-4">
-
     <h1>Sistem Pakar dengan Metode CBR</h1>
     <p>
         Case Based Reasoning (CBR) merupakan suatu metode untuk menyelesaikan masalah dengan berpatokan pada
@@ -11,7 +11,6 @@
         mungkin malakukan penyesuaian terhadap permasalahan yang memiliki kesamaan yang telah diselesaikan
         sebelumnya.
     </p>
-
     <div class="col-12 d-flex justify-content-center">
         <a href="#datadiri" data-toggle="modal" class="btn btn-sm p-3 mt-4 btn-outline-secondary">mulai pengujian <i class="fa fa-external-link-alt" style="font-size: 80%;"></i></a>
     </div>
@@ -29,6 +28,14 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    <?php
+                    $acak = mt_rand(0, 700);
+                    $tanggal = date("dmY")
+                    ?>
+                    <div class="form-group">
+                        <label>Id</label>
+                        <input type="text" readonly value="<?= $tanggal ?>-<?= $acak ?>" class="form-control" name="id_riwayat">
+                    </div>
                     <div class="form-group">
                         <label>Nama</label>
                         <input type="text" class="form-control" name="nama">
@@ -46,4 +53,29 @@
         </div>
     </div>
 </div>
+<script>
+    <?php if (session()->getFlashData('insert')) : ?>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil menambah',
+            showConfirmButton: false,
+            timer: 950
+        })
+    <?php elseif (session()->getFlashData('update')) : ?>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil diubah',
+            showConfirmButton: false,
+            timer: 950
+        })
+    <?php elseif (session()->getFlashData('finsert')) : ?>
+        Swal.fire({
+            icon: 'error',
+            title: 'Gagal menambah data',
+            showConfirmButton: true,
+            text: "nama sudah pernah ditambahkan",
+        })
+    <?php endif ?>
+</script>
+
 <?= $this->endSection() ?>

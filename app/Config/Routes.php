@@ -52,8 +52,9 @@ $routes->add('/hub/hapus/(:num)', 'Admin::hub_hapus/$1', ['as' => 'hub_del']);
 $routes->add('/hub/edit/(:num)', 'Admin::hub_edit/$1', ['as' => 'hub_edit']);
 $routes->add('/hub/get/(:num)', 'Admin::hub_get/$1', ['as' => 'hub_get']);
 
+$routes->post('/riwayat_save', 'Admin::input_riwayat', ['as' => 'save_riwayat']);
 $routes->get('/cbr/(:num)', 'Admin::cbr/$1', ['as' => 'cbr']);
-$routes->get('/pengujian', 'Admin::input_cbr', ['as' => 'cbr_form']);
+$routes->add('/pengujian', 'Admin::input_cbr', ['as' => 'cbr_form']);
 /**
  * --------------------------------------------------------------------
  * Additional Routing
