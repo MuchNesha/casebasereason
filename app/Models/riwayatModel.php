@@ -27,6 +27,15 @@ class riwayatModel extends Model
         return $query;
     }
 
+    public function get_all()
+    {
+        $hub = $this->db->table('riwayat_konsultasi');
+        $hub->select('*');
+        $hub->join('rw_gejala', 'rw_gejala.id_riwayat = riwayat_konsultasi.id_riwayat');
+        $query = $hub->get();
+        return $query;
+    }
+
     public function update_riwayat($data, $id)
     {
         $query = $this->db->table('riwayat_konsultasi')->update($data, array('id_riwayat' => $id));

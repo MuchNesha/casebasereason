@@ -362,11 +362,13 @@ class Admin extends BaseController
 
     public function view_riwayat()
     {
+        $mdl = new riwayatModel();
         $current = $this->request->getVar('page_table') ? $this->request->getVar('page_table') : 1;
         $data = [
             'riwayat' => $this->riwayat->paginate(4, 'table'),
             'pager' => $this->riwayat->pager,
             'current' => $current,
+            'kerusakan' => $mdl->get_all()->getResult(),
         ];
         return view('riwayat', $data);
     }

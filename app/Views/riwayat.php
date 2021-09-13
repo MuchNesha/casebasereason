@@ -13,6 +13,7 @@
                 <th>Hasil Diagnosa</th>
                 <th>Nilai</th>
                 <th>Persen</th>
+                <th>Aksi</th>
             </thead>
             <tbody>
                 <?php foreach ($riwayat as $r) : ?>
@@ -23,6 +24,9 @@
                         <td><?= $r['hasil_diagnosa']; ?></td>
                         <td><?= $r['nilai'] ?></td>
                         <td><?= $r['nilai'] * 100 ?>%</td>
+                        <td>
+                            <a href="#kerusakan<?= $r['id_riwayat'] ?>" data-toggle="modal" class="btn btn-sm btn-danger">Lihat Kerusakan</a>
+                        </td>
                     </tr>
                 <?php endforeach ?>
             </tbody>
@@ -35,4 +39,33 @@
         </div>
     </div>
 </div>
+<?php foreach ($kerusakan as $k) : ?>
+    <div class="modal fade" id="kerusakan<?= $k->id_riwayat ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Data milik <?= $k->nama ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-header">
+                            Kerusakan
+                        </div>
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                                <p><?= $k->gejala_kerusakan ?></p>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endforeach ?>
 <?= $this->endSection() ?>

@@ -44,7 +44,7 @@
                         <span class="col-12"><?= $ar['rusak']; ?> : <b><?= $fhasil; ?></b> <span class="text-success">(<?= $fhasil * 100; ?>%)</span></span>
                         <div class="col-1">
                             <?php foreach ($riwayat as $r) : ?>
-                                <input type="text" name="id_riwayat" value="<?= $r->id ?>">
+                                <input type="hidden" name="id_riwayat" value="<?= $r->id ?>">
                                 <input type="hidden" name="nama" value="<?= $r->nama ?>">
                                 <input type="hidden" name="alamat" value="<?= $r->alamat ?>">
                             <?php endforeach; ?>
