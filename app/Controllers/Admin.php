@@ -3,7 +3,9 @@
 namespace App\Controllers;
 
 use App\Models\gejalaModel;
+use App\Models\riwayatModel;
 use App\Models\rusakModel;
+use App\Models\tambahanModel;
 use CodeIgniter\Config\View;
 
 class Admin extends BaseController
@@ -286,10 +288,12 @@ class Admin extends BaseController
         // // d($fhasil);
         // // d($tmp);
         // // d($arrhasil);
+        $mdl = new tambahanModel();
         $data = [
             'fhasil' => $fhasil,
             'tmp' => $tmp,
-            'arrhasil' => $arrhasil
+            'arrhasil' => $arrhasil,
+            'riwayat' => $mdl->get_riwayatbyid()->getResult()
         ];
 
 
@@ -300,47 +304,48 @@ class Admin extends BaseController
         return view('cbr_hasil', $data);
     }
 
-    public function rw_gejala()
+    public function simpan_riwayat()
     {
-        $rw_gejala = new gejalaModel();
-        foreach ($this->request->getPost('gejala_kerusakan') as $var) {
-            $rw_gejala->insert([
-                'id_riwayat' => $this->request->getPost('id_riwayat'),
-                'gejala_kerusakan' => $this->request->getPost('gejala_kerusakan')
-            ]);
-        }
+        $riwayat = new riwayatModel();
+        $riwayat->insert([
+            'id_riwayat' => $this->request->getPost('id_riwayat'),
+            'nama' => $this->request->getPost('nama'),
+            'alamat' => $this->request->getPost('alamat'),
+            'hasil_diagnosa' => implode(',', $_POST['hasil_diagnosa']),
+            'nilai' => $this->request->getPost('nilai')
+        ]);
+        session()->setFlashData('insert', true);
+        return redirect()->to('/view_riwayat');
+    }
+
+    public function datadiri()
+    {
+        $riwayat = new tambahanModel();
+        $riwayat->insert([
+            'nama' => $this->request->getPost('nama'),
+            'alamat' => $this->request->getPost('alamat')
+        ]);
+        session()->setFlashData('insert', true);
+        return redirect()->to('/pengujian');
     }
 
     public function input_riwayat()
     {
-        $var = $this->request->getVar();
-        // $c = $this->riwayat->where([
-        //     'nama' => $var['nama'],
-        //     'alamat' => $var['alamat'],
-        // ])->first();
-        // if ($c != null) {
-        //     session()->setFlashData('finsert', true);
-        //     return redirect()->to('/');
-        // }
-
-        $this->riwayat->save([
-            'id_riwayat' => $this->request->getPost('id_riwayat'),
-            'nama' => $this->request->getPost('nama'),
-            'alamat' => $this->request->getPost('alamat'),
-        ]);
+        //$var = $this->request->getVar();
 
         $rw_gejala = new gejalaModel();
-        foreach ($this->request->getPost('gejala_kerusakan') as $var) {
-            $rw_gejala->insert([
-                'id_riwayat' => $this->request->getPost('id_riwayat'),
-                'gejala_kerusakan' => $this->request->getPost('gejala_kerusakan')
-            ]);
-        }
-        // session()->setFlashData('insert', true);
-        // return redirect()->to('/pengujian/' . $this->request->getPost('id_riwayat'));
+        $rw_gejala->insert([
+            // 'kode' => implode(',', $_POST['kode']),
+            'id_riwayat' => $this->request->getPost('id_riwayat'),
+            'gejala_kerusakan' => implode(',', $_POST['gejala_kerusakan'])
+        ]);
+        session()->setFlashData('insert', true);
+        return redirect()->to('/pengujian');
     }
+
     public function input_cbr()
     {
+        $mdl = new tambahanModel();
         $data2 = [
             'id_riwayat' => $this->request->getPost('id_riwayat'),
             'nama' => $this->request->getPost('nama'),
@@ -348,9 +353,21 @@ class Admin extends BaseController
         ];
 
         $data = [
-            'ciri' => $this->ciri->findAll()
+            'ciri' => $this->ciri->findAll(),
+            'riwayat' => $mdl->get_riwayatbyid()->getResult()
         ];
         $data['history'] = $data2;
         return view('cbr_form', $data);
+    }
+
+    public function view_riwayat()
+    {
+        $current = $this->request->getVar('page_table') ? $this->request->getVar('page_table') : 1;
+        $data = [
+            'riwayat' => $this->riwayat->paginate(4, 'table'),
+            'pager' => $this->riwayat->pager,
+            'current' => $current,
+        ];
+        return view('riwayat', $data);
     }
 }

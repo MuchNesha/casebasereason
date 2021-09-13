@@ -273,8 +273,11 @@
                     <button onclick="toggleMenu();">&#9776;</button>
                 </li>
                 <li class="menu-item hidden"><a href="/"><i class="fa fa-home"></i> Home</a></li>
-                <li class="menu-item hidden"><a href="<?= route_to('cbr_form'); ?>"><i class="fa fa-chart-bar"></i>
+                <li class="menu-item hidden"><a href="#datadiri" data-toggle="modal"><i class="fa fa-chart-bar"></i>
                         Pengujian</a>
+                </li>
+                <li class="menu-item hidden"><a href="<?= route_to('view_rw'); ?>"><i class="fa fa-history"></i>
+                        Riwayat</a>
                 </li>
                 <li class="menu-item hidden"><a href="<?= route_to('rusak_list'); ?>"><i class="fa fa-motorcycle"></i>
                         Kerusakan</a></li>
@@ -299,7 +302,42 @@
 
     </section>
 
-
+    <div class="modal fade" id="datadiri" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form action="<?= base_url('Admin/input_cbr') ?>" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Masukkan Data Diri Terlebih Dahulu</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <?php
+                        $acak = mt_rand(0, 700);
+                        $tanggal = date("dmY")
+                        ?>
+                        <div class="form-group">
+                            <label>Id</label>
+                            <input type="text" readonly value="<?= $tanggal ?>-<?= $acak ?>" class="form-control" name="id_riwayat">
+                        </div>
+                        <div class="form-group">
+                            <label>Nama</label>
+                            <input type="text" class="form-control" name="nama">
+                        </div>
+                        <div class="form-group">
+                            <label>Alamat</label>
+                            <input type="text" class="form-control" name="alamat">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <!-- FOOTER: DEBUG INFO + COPYRIGHTS -->
 
